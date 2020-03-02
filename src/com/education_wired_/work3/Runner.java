@@ -28,6 +28,10 @@ public class Runner {
                 count--;
             }catch (InvalidShapeStringException exp){
                 System.out.println(exp.getMessage());
+            }catch (ArrayIndexOutOfBoundsException exp){
+                System.out.println("invalid parameter ");
+            }catch (NumberFormatException exp){
+                System.out.println("invalid number in parameter ");
             }
         }
 

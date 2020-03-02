@@ -41,10 +41,9 @@ public class Rectangle extends Shape{
         return super.toString() + ", width = "+ width + ", heigth = " + heigth;
     }
 
-    public static Rectangle parseRectangle(String stringToParse){
-        String[] parseArgs = stringToParse.trim().split("\\s*:\\s*");
-        String[] dimArgs = parseArgs[2].trim().split("\\s*,\\s*");
-        return new Rectangle(parseArgs[1],Integer.parseInt(dimArgs[0]),Integer.parseInt(dimArgs[1]));
+    public static Rectangle parseRectangle(String args){
+        String[] dimArgs = args.trim().split("\\s*[:,]\\s*");
+        return new Rectangle(dimArgs[0],Integer.parseInt(dimArgs[1]),Integer.parseInt(dimArgs[2]));
     }
 
 }

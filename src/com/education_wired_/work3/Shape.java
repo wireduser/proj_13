@@ -42,17 +42,24 @@ public abstract class Shape implements Drawable, Comparable, Cloneable{
     }
 
     public static Shape parseShape(String strShape){
-        String[] shapeArgs = strShape.trim().split("\\s*:\\s*");
 
-        switch (shapeArgs[0].toUpperCase().trim()){
+        int index = strShape.indexOf(":");
+        String figure = strShape.substring(0,index).trim();
+        String args = strShape.substring(index+1);
+        Shape shape = null;
+        switch (figure.toUpperCase()){
             case "CIRCLE":
-                return Circle.parseCircle(strShape);
+                shape = Circle.parseCircle(args);
+                break;
             case "TRIANGLE":
-                return  Triangle.parseTriangle(strShape);
+                shape =  Triangle.parseTriangle(args);
+                break;
             case "RECTANGLE":
-                return  Rectangle.parseRectangle(strShape);
+                shape =  Rectangle.parseRectangle(args);
+                break;
             default:
-                throw new InvalidShapeStringException("Error Shape name - \"" + shapeArgs[0].trim()+"\"");
+                throw new InvalidShapeStringException("Error Shape name - \"" + figure+"\"");
         }
+        return shape;
     }
 }

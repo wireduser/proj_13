@@ -52,9 +52,8 @@ public class Triangle extends Shape {
         return super.toString() +", a = " + a +", b = " + b +", c = " + c ;
     }
 
-    public static Triangle parseTriangle(String stringToParse){
-        String[] parseArgs = stringToParse.trim().split("\\s*:\\s*");
-        String[] dimArgs = parseArgs[2].trim().split("\\s*,\\s*");
-        return new Triangle(parseArgs[1],Integer.parseInt(dimArgs[0]),Integer.parseInt(dimArgs[1]),Integer.parseInt(dimArgs[2]));
+    public static Triangle parseTriangle(String args){
+        String[] dimArgs = args.trim().split("\\s*[:,]\\s*");
+        return new Triangle(dimArgs[0],Integer.parseInt(dimArgs[1]),Integer.parseInt(dimArgs[2]),Integer.parseInt(dimArgs[3]));
     }
 }
